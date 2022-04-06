@@ -55,5 +55,120 @@ ________________________________________________________
     *styles.css
     *initialize a git repository
         database that tracks project history
+    *install fonts
+    *install photoshop.
+________________________________________________________
+7- Essential Photoshop Skills
+    *size of fonts
+    *measure distances
+    *basic tools
+________________________________________________________
+8- Identifying the Components
+    Components of moshified.com 
+        logo 
+        navbar
+        banner (hero)
+            heading
+            text
+            button
+        input field
+        badge
+        inline list
+        three column grid 
+        cards
+            badge
+            list
+            button
+        icon round
+        link
+        two column grid 
+        media componenets
+            icon left
+            heading right
+            text right
+        (quote componenet + image = card) : testimonial
+        callout
+        footer : lists
+________________________________________________________
+9- Color Palette
+    before building componenets lets define our color palette. 
+    color palette:
+        *primary color :        blue            #2584ff
+        *secondary color :      lighter blue    #00d9ff 
+        *accent color :         orange          #ff3400
+        *heading color :        dark purple     #1b0760
+        *bodytext color :       light purple    #918ca4
+    we use variables to define color palette so we can reuse them:
+        :root {
+        --color-primary: #2584ff;
+        --color-secondary: #00d9ff;
+        --color-accent: #ff3400;
+        --color-heading: #1b0760;
+        --color-body: #918ca4;
+       }
+________________________________________________________
+10- Typography
+    fonts and their sizes.
+    as we are going to pick mobile first approach we always look at mobile version first.
+    we add the links from https://fonts.google.com 
+
+    then add rule for body font family and color:
+        body {
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            color: var(--color-bodys);
+        }
+
+        TRICK: h${Heading $}*3
+                <h1>Heading 1</h1>
+                <h2>Heading 2</h2>
+                <h3>Heading 3</h3>
         
+    setting headings color: 
+        h1, h2, h3 {
+            color: var(--color-heading);
+        }
+    
+    setting font sizes:
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            font-size: 2.4rem;
+        }
+
+        h1 {
+            font-size: 7rem;
+        }
+
+        h2 {
+            font-size: 4rem;
+        }
+
+        h3 {
+            font-size: 3rem;
+        }
+
+    setting line spacing:
+        body {
+            line-height: 1.5;
+        }
+
+    setting margin between heading and text:
+    first we measure it in photoshop: 20px --> 2rem 
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+        }
+
+        p {
+            /* to avoid margin collapsing */
+            margin-top: 0;
+        }
+
+    now we are done with mobile version. 
+    so now we set the desktop version (1024px):
+
+
+
+
         
