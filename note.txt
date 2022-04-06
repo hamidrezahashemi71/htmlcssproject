@@ -167,6 +167,69 @@ ________________________________________________________
 
     now we are done with mobile version. 
     so now we set the desktop version (1024px):
+        @media screen and (min-width: 1024px) {
+            body {
+                font-size: 1.8rem;
+            }
+            h1 {
+                font-size: 8rem;
+            }
+            h3 {
+                font-size: 2.4rem;
+            }
+        }
+    
+    now we are done with typography. 
+    next we want to build our first component.
+________________________________________________________
+11- Links
+    first we implement the link componenet.
+    learn more links are UPPERCASE.
+    links have no underline. 
+    We pick the font size and weight from mobile version of photoshop design.
+
+        a {
+            text-decoration: none;
+        }
+
+        .link-arrow {
+            color: var(--color-accent);
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 2rem;
+        }
+    
+    now we want the arrow after the link.
+    we implement this with after Pseudo-Selector:
+        we also can add icon instead of 
+
+        .link-arrow::after {
+            content: '-->';
+            margin-left: 5px;
+        }
+    
+    we want the arrow move to right in hover state:
+
+        .link-arrow::after {
+            transition: margin-left 0.15s;
+        }
+
+        .link-arrow:hover::after {
+            margin-left: 10px;
+        }
+    
+    now we set the changes for desktop version:
+
+        @media screen and (min-width: 1024px) {
+            .link-arrow {
+                font-size: 1.5rem;
+            }
+        }
+    it is better to add media queries after each section.
+    to better organize the componenets it is better to make a folder and keep a sample of each componenet.
+        
+
+
 
 
 
