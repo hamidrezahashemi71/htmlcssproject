@@ -1,0 +1,59 @@
+1- Introduction
+    goal: build a imaginery cloud hosting website that is:
+            * beautiful
+            * responsive
+            * fast
+    we will start with a photoshop design markup.
+    then we will hand code this design markup to build the site.
+    this website will look great on all screen sizes.
+    all What? How? Why? questions will be answered.
+    it is best practice to become HTML/CSS expert.
+
+    we will be able to:
+        convert any photoshop design markup to a fast responsive website.
+________________________________________________________
+3- Prerequisites 
+    *Semantic HTML elements
+    *Basic CSS properties (colors, orders, shadows, fonts, etc.)
+    *Selectors & Pseudo-Selectors
+    *CSS box model
+    *Absolute & Relative positioning
+    *Flex & Grid layout
+    *Media queries
+    *Responsive Images
+    *Transformations
+    *Transitions
+________________________________________________________
+4- How to Take This Course
+    *Providing needed tools
+    *Setting up the project
+        photoshop design markups and all supplementary materials (images, icons, fonts)
+    *Coding Lessons
+        in every lesson we will code a specific part of the design.
+        we will learn tips & tricks along the way
+        actively get involved:
+            - code along
+            - try to solve before hand
+________________________________________________________
+5- Tools You Need
+    *Google Chrome browser
+    *Chrome DevTools
+    *Firefox
+    *VSCode Editor 
+    *HTML CSS Support extension
+    *CSS Peak extension
+    *Prettier extension
+    *Highlight Matching Tag extension
+    *TODO Highlight extension
+    *Live Server extension
+    *git from https://git-scm.com
+________________________________________________________
+6- Setting Up the Project
+    *folder
+    *index.html
+    *normalize.css
+    *styles.css
+    *initialize a git repository
+        database that tracks project history
+        
+        
