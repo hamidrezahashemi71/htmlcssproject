@@ -227,7 +227,52 @@ ________________________________________________________
         }
     it is better to add media queries after each section.
     to better organize the componenets it is better to make a folder and keep a sample of each componenet.
-        
+________________________________________________________
+12- Badges 
+    size wise:
+        large Badges
+        small Badges
+    color wise:
+        light blue
+        darker blue
+    
+    so we are gonna apply (OOP CSS). 
+    second principle of OOPCSS: seperating structure from skin.
+    so we will have to class for badges:
+        1 fonts and paddings
+
+            .badge {
+                border-radius: 20px;
+                padding: 0.5rem 2rem;
+                font-weight: bold;
+                white-space: nowrap;
+                color: #fff;
+            }
+
+        2 color and skin 
+
+            .badge--primary {
+                background: var(--color-primary);
+            }
+
+            .badge--secondary {
+                background: var(--color-secondary);
+            }
+
+            .badge--small {
+                font-size: 1.6rem;
+            }
+            
+    now we set the changes for desktop version:
+
+        @media screen and (min-width: 1024px) {
+            .badge {
+                font-size: 1.5rem;
+            }
+            .badge--small {
+                font-size: 1.2rem;
+            }
+
 
 
 
