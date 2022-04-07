@@ -808,5 +808,41 @@ ________________________________________________________
             position: relative;
             bottom: 10px
         }
-        
+
     now we set the changes for desktop version.
+        @media screen and (min-width: 1024px) {
+            .quote {
+                font-size: 2rem;
+            }
+            .quote__author {
+                font-size: 2.4rem;
+            }
+            .quote__company {
+                font-size: 1.6rem;
+            }
+        }
+________________________________________________________
+23 - Grids
+    there are many places on this page whre we have two column grid. 
+    on mobile version we always have a single column grid. 
+    for demo:
+
+        <div style="height: 100px; background: gold"></div>
+        <div style="height: 100px; background: darkblue"></div> 
+
+    this divs are placed vertically. this is exactly what we want for mobile.
+    for 2 col grid starting from tablet we want to put them side by side:
+
+        @media screen and (min-width: 768px) {
+            .grid--1x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    
+    for 3 col grid on desktops:
+    
+        @media screen and (min-width: 1024px) {
+            .grid--1x3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }

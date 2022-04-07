@@ -4,6 +4,7 @@
     --color-accent: #ff3400;
     --color-heading: #1b0760;
     --color-body: #918ca4;
+    --color-body-darker : #5c5577;
     --color-border: #ccc;
     --border-radius: 30px;
 }
@@ -368,4 +369,76 @@ a {
 
 .media__image {
     margin-top: 1.1rem;
+}
+
+@media screen and (min-width: 1024px) {
+    .media__title {
+        font-size: 1.8rem;
+    }
+    .media__body {
+        font-size: 1.8rem;
+    }
+}
+
+/* QUOTES */
+.quote {
+    font-size: 3rem;
+    font-style: italic;
+    columns: var(--color-body-darker);
+    line-height: 1.3;
+}
+
+.quote__text::before {
+    content: open-quote;
+}
+.quote__text::after {
+    content: close-quote;
+}
+
+.quote__author {
+    font-family: Montserrat , Arial, Helvetica, sans-serif;
+    font-size: 3rem;
+    font-weight: 600;
+    font-style: normal;
+    margin-bottom: 0;
+}
+
+.quote__company {
+    font-style: normal;
+    color: var(--color-heading);
+    opacity: 0.4;
+}
+
+.quote__line {
+    position: relative;
+    bottom: 10px
+}
+
+@media screen and (min-width: 1024px) {
+    .quote {
+        font-size: 2rem;
+    }
+    .quote__author {
+        font-size: 2.4rem;
+    }
+    .quote__company {
+        font-size: 1.6rem;
+    }
+}
+
+/* GRIDS */
+.grid {
+    display: grid;
+}
+
+@media screen and (min-width: 768px) {
+    .grid--1x2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .grid--1x3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
