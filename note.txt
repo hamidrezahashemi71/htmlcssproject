@@ -510,9 +510,49 @@ ________________________________________________________
         .input-group .btn--accent {
             margin: 4px;
         }
+________________________________________________________
+18- Cards
+    now we want to implement a card componenet.
+        *round corners
+        *header
+        *body
+        *
+    
+    first we define the card in the markup:
+        <div class="card">
+        <header class="card__header">Card Title</header>
+        <div class="card__body">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio,
+            nostrum?
+        </div>
+        </div>
+    
+    now we build the basic structure:
+        .card {
+            border-radius: 7px;
+            box-shadow: 0 0 20px 10px #f3f3f3;
+            overflow: hidden; #to bring round corners back after styling header.
+        }
 
+        .card__header, .card__body {
+            padding: 2rem 3rem;
+        }
 
+    now we build the skin:
+        .card--primary .card__header {
+            background: var(--color-primary);
+            color: #fff;
+        }
 
+        .card--secondary .card__header {
+            background: var(--color-secondary);
+            color: #fff;
+        }
+
+    next we will combine the card with a badge, a list and a button to create a plan card.
+________________________________________________________
+19- Plans
+    we call this 
 
 
 
