@@ -436,7 +436,80 @@ ________________________________________________________
     we have a special input componenet that contains a button (search).
     in this lesson we implement a basic input componenet.
     next we combine it with a button element (input groups).
-    
+
+        .input {
+            padding: 1.5rem 3.5rem;
+            /* border is temporarily added. later replaced with shadow */
+            border: 1px solid #ccc;
+            border-radius: 40px;
+            font-size: 2rem;
+            outline: 0;
+            color: var(--color-heading);
+        }
+
+        ::placeholder{
+            color: #ccc;
+        }
+
+        @media screen and (min-width: 1024px) {
+            .input {
+                font-size: 1.5rem;
+            }
+        }
+________________________________________________________
+17- Input Groups
+    our input componenet is ready. now we put button inside it.
+    it is a <div> with shadow that contains an input and a button.
+
+        <div class="input-group">
+        <input type="text" class="input" placeholder="Enter domain name here" />
+        <button class="btn btn--accent">Search</button>
+        </div>
+
+    in this form if we move button to up, it will appear on left side.
+
+        <div class="input-group">
+        <button class="btn btn--accent">Search</button>
+        <input type="text" class="input" placeholder="Enter domain name here" />
+        </div>
+
+    or we can replace it with an icon.
+
+    <div class="input-group">
+      <input type="text" class="input" placeholder="Enter domain name here" />
+      <span class="icon-container">
+        <svg class="icon icon--primary">
+          <use xlink:href="images/sprite.svg#search"></use>
+        </svg>
+      </span>
+    </div>
+
+    this is the benefit of defining items in isolation.
+    this is called the BOTTOM UP approach.
+        it is a Components first approach.
+
+    in contrast we have TOP DOWN approach.
+        it is a Page first approach.
+        troubleshooting is hard.
+        BAD-PRACTICE 
+
+    now we style the div. 
+
+        .input-group {
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius) ;
+            display: flex;
+        }
+
+        .input-group .input {
+            border: 0;
+            flex-grow: 1;
+            padding: 1.5rem 1rem; #for reducing space between text and field.
+        }
+
+        .input-group .btn--accent {
+            margin: 4px;
+        }
 
 
 
