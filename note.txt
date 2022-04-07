@@ -433,7 +433,10 @@ ________________________________________________________
         }
 ________________________________________________________
 16- Inputs
-    we ha
+    we have a special input componenet that contains a button (search).
+    in this lesson we implement a basic input componenet.
+    next we combine it with a button element (input groups).
+    
 
 
 
