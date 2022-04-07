@@ -691,6 +691,45 @@ ________________________________________________________
             top: -6px;
             right: 5%;
         }
+________________________________________________________
+21- Media Objects
+    the user interface pattern is officially called a media Object.
+    we have an icon on the left
+    on the right we have a title followed by some text.
+    this pattern is seen on any social networking platform.
 
+    so we have a div that contains two elements: image and body:
 
+        <div class="media">
+            <div class="media__image"></div>
+            <div class="media__body"></div>
+        </div>
+
+    for the image we use the icon template:
+
+        <svg class="icon icon--primary">
+        <use xlink:href="images/sprite.svg#settings"></use>
+        </svg>
+
+    in the psd design, we have <h2> above the media Object.
+    so we use <h3> for thtile:
+
+        <div class="media">
+        <div class="media__image">
+            <svg class="icon icon--primary">
+            <use xlink:href="images/sprite.svg#snap"></use>
+            </svg>
+        </div>
+        <div class="media__body">
+            <h3 class="media__title">Easy Start & Managed Updates</h3>
+            <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae,
+            reprehenderit?
+            </p>
+        </div>
+        </div>
+    
+    now the structure is ready.
+    so the bg is black but we'll implement that when designing container section.
+    next we will implement cqute component.
         
