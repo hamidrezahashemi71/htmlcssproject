@@ -304,6 +304,11 @@ ________________________________________________________
         }
 
     now we set the changes for desktop version:
+        @media screen and (min-width: 1024px) {
+            .list--tick .list__item {
+                padding-left: 0;
+            }
+        }
 ________________________________________________________
 14- Icons
     all icons are black and have transparent bg.
@@ -350,7 +355,85 @@ ________________________________________________________
             justify-content: center;
             align-items: center;
         }
+________________________________________________________
+15- Buttons
+    we have some variations for buttons.
+    COLOR vise:
+        *accent color buttons
+        *outline buttons
+            hover effect
+        *
+        secondary color button
+    SIZE vise:
+        *content fit 
+        *container fit (block buttons)
 
+    so we define our buttons. the hover effect of each button next to its normal state:
+
+        .btn {
+            border-radius: 40px;
+            border: 0;
+            /* to make the pointer into a hand */
+            cursor: pointer;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 1rem 0;
+            padding: 2rem 3rem;
+            text-align: center;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .btn--primary {
+            background: var(--color-primary);
+            color: #fff;
+        }
+
+        .btn--primary:hover {
+            background: #69aaff;
+        }
+
+        .btn--secondary {
+            background: var(--color-secondary);
+            color: #fff;
+        }
+        .btn--secondary:hover {
+            background: #86edff;
+        }
+        .btn--accent {
+            background: var(--color-accent);
+            color: #fff;
+        }
+
+        .btn--accent:hover {
+            background: #ff9073;
+        }
+
+        .btn--outline {
+            /* to make it container size */
+            width: 100%;
+            display: inline-block;
+            background: #fff;
+            border: 2px solid var(--color-heading);
+            color: var(--color-heading);
+        }
+
+        .btn--outline:hover {
+            background: var(--color-heading);
+            color: #fff;
+            border: none;
+        }
+
+    now we set the changes for desktop version: 
+
+        @media screen and (min-width: 1024px) {
+            .btn {
+                font-size: 1.5rem;
+            }
+        }
+________________________________________________________
+16- Inputs
+    we ha
 
 
 
