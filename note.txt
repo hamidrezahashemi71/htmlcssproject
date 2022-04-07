@@ -262,7 +262,7 @@ ________________________________________________________
             .badge--small {
                 font-size: 1.6rem;
             }
-            
+
     now we set the changes for desktop version:
 
         @media screen and (min-width: 1024px) {
@@ -272,7 +272,38 @@ ________________________________________________________
             .badge--small {
                 font-size: 1.2rem;
             }
+________________________________________________________
+13- Lists
+    *horizontal (inline) list for navbar
+    *vertical list with green ticks for cards
+    *vertical list footer 
+    
+        .list {
+            list-style: none;   #getting rid of bullet
+            padding-left: 0;    #getting rid of default left padding
+            color: var(--color-heading);
+        }
+    
+    now we give each list item a class by BEM:
 
+        .list--inline .list__item {
+            display: inline-block;
+            margin-right: 2rem;
+        }
+
+    now we define rules for horizontal lists:
+
+        .list--tick {
+            list-style-image: url(../images/tick.svg);
+            padding-left: 3rem;
+        }
+
+        .list--tick .list__item {
+            padding-left: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+    now we set the changes for desktop version:
 
 
 
