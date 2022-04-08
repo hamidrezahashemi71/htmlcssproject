@@ -1490,6 +1490,116 @@ ________________________________________________________
         .nav__brand {
             transform: translateY(5px)
         }
+________________________________________________________
+29- Hero
+    we're going to build the hero componenet also called banner.
+    we have:
+    on desktop:
+        block--dark block--skewed-left 
+            grid--1x2
+                content
+                image 
+    on mobile:
+        block--dark block--skewed-left 
+            grid--1x1
+                content
+
+    DESKTOP
+    so we have all the Essential componenets to build this bigger componenet.
+    first: adding the banner image to the project.
+
+    inserting block and grid:
+    we put the grid in the pre defined container to limit it to 1140px:
+
+        <section class="block block--dark block--skewed-left">
+            <div class="container grid grid--1x2"></div>
+        </section> 
+
+    inserting grid 1 elements:
+
+        <section class="block block--dark block--skewed-left">
+            <div class="grid grid--1x2">
+                <div class="hero_content">
+                    <h1>Cloud Hosting for Pros</h1>
+                    <p>Deploy your websites in less than 60 seconds.</p>
+                    <a href="#" class="btn btn--accent btn--stretched">Get started</a>
+                </div>
+            </div>
+        </section>
+
+    inserting grid 2 image:
+        <section class="block block--dark block--skewed-left">
+            <div class="grid grid--1x2">
+                <div class="hero_content">
+                    <h1>Cloud Hosting for Pros</h1>
+                    <p>Deploy your websites in less than 60 seconds.</p>
+                    <a href="#" class="btn btn--accent btn--stretched">Get started</a>
+                </div>
+                <img src="images/banner.png" alt="Banner" />
+            </div>
+        </section>   
+    
+    now that we have added all needed elements, we can start styling:
+    <h1> color and space between lines:
+    in typography we set a prop to headers:
+
+        h1, h2, h3 {
+            line-height: 1.1;
+        }
+    
+    for color:
+        <h1 class="block__heading">Cloud Hosting for Pros</h1>
+
+    now we work on the text:
+        <p class="hero__tagline">Deploy your websites in less than 60 seconds.</p>
+
+        .hero__tagline {
+            font-size: 2rem;
+            color: #b9c3cf;
+            letter-spacing: 1px;
+            margin-top: 2rem;
+            margin-bottom: 5rem;
+        }
+    
+    removing the horizontal scrolling:
+            <img class="hero__image" src="images/banner.png" alt="Banner" />
+
+            .hero__image {
+                width: 100%;
+            }
+    
+    MOBILE 
+    the grid takes care of 1 column grid. 
+    we have to work on the alignment of the heading and text to be centered.
+    like the block section, we have to assume the header and text here are our header of block componenet.
+        <div class="hero_content ">  >>>>>>   <header class="block__header hero_content ">
+
+    the order of classes is from more generic to specific.
+
+    in mobile version the angle of clippath is too much comared to psd design.
+    we define a rule for hero and put the right poligon there:
+        <section class="block block--dark block--skewed-left hero">
+
+        .hero {
+            clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0 100%);
+        }
+    
+    mobile version is done.
+    lets customize for wider screens.
+    text alignment of content.
+    content vertically in the middle.
+
+        @media screen and (min-width: 768px) {
+            .hero {
+                padding-top: 0;
+            }
+            .hero__content {
+                text-align: left;
+                align-self: center;
+            }
+        }
+
+
 
 
 
