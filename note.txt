@@ -1314,6 +1314,187 @@ ________________________________________________________
         }
 ________________________________________________________       
 28- Navigation Bars
+    the implementation of nav bar 
+    *mobile 
+        logo on left
+        a toggler button on right 
+            by clicking on toggler the mini item should appear vertically
+    *desktop
+        logo on left
+        nav bar as a horizontal list on right 
+    
+    so in this nav bar we have:
+        logo
+        toggler button
+            unordered list
+    
+    in terms of behaviour this nav bar is a collapsible component.
+    so we dont have to write another js code. we can reuse it.
+    this is another benefit of component based approach.
+    first: adding the logo file to the project.
+
+    markup:
+    inserting logo:
+        <nav class="nav">
+            <a href="/"><img src="images/logo.svg" alt="logo"></a>
+        </nav>
+    
+    inserting icon:
+        <nav class="nav">
+            <a href="/"><img src="images/logo.svg" alt="logo" /></a>
+            <svg class="icon icon--white">
+                <use xlink:href="images/sprite.svg#menu"></use>
+            </svg>
+        </nav>
+    
+    inserting unordered list:
+        <nav class="nav">
+            <a href="/"><img src="images/logo.svg" alt="logo" /></a>
+            <svg class="icon icon--white">
+                <use xlink:href="images/sprite.svg#menu"></use>
+            </svg>
+            <ul class="list">
+                <li><a href="#">Hosting</a></li>
+                <li><a href="#">VPS</a></li>
+                <li><a href="#">Domain</a></li>
+                <li><a href="#">Pricing</a></li>
+            </ul>
+        </nav>
+    
+    now we shoud set bg color of nav to black and enable flex to lay out horizontally.
+    we set the justify content to space between so first and last items push to sides:
+        .nav {
+            background: #000;
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+        }
+
+    now we want to push the list to second line.
+    enable flex-wrap for nav & set nav__list width to 100%:
+        <ul class="list nav__list">
+
+        .nav {
+            flex-wrap: wrap;
+        }
+
+        .nav__list {
+            width: 100%;
+        }
+    
+    color of the list and padding before and between elements:
+        <li class="nav__item">
+
+        .nav__item {
+            padding: 0.5 2rem;
+        }
+
+    for the color we have to assign it to link item because links have their own color.
+    we can define new class like nav__links or we can use direct child CSS styling:
+
+        .nav__item>a {
+            color: #d2d0db;
+        }
+    
+    border for nav__item:
+        .nav__item {
+            padding: 0 2rem;
+            border-bottom: 1px solid #222;
+        }
+    
+    hover effect and transition:
+        .nav__item>a {
+            color: #d2d0db;
+            transition: color 0.3s;
+        }
+        .nav__item>a:hover {
+            color: #fff;
+        }
+    
+    we want the icon initially have less opacity and when expanded we want it brighter:
+        <svg class="icon icon--white nav__toggler">
+
+        .nav__toggler {
+            opacity: 0.5;
+        }
+    
+    so we neef to give the nav an extra collapsible class.
+    and a collapsible__content class to the list to make it hidden in default:
+
+    <nav class="nav collapsible">
+    <ul class="list nav__list collapsible__content">
+
+    now when clicking the js code kicks in! 
+
+    there is an extra space below the navbar. we want to remove it.
+    when inspecting we see there is 24px of margin above and below the list.
+
+        .nav__list {
+            margin: 0;
+        }
+
+    bringing the icon to middle and remove vertical padding to reduce the extra space:
+        .nav {
+            padding: 0 1rem;
+            align-items: center;
+        }
+    
+    now we want the icon be brighter and add a shadow when clicking:
+        <nav class="nav collapsible collapsible--expanded">
+
+        .nav.collapsible--expanded .nav__toggler {
+            opacity: 1;
+            box-shadow: 0 0 0 3px #666;
+            border-radius: 5px;
+        }
+    
+    the .nav.collapsible--expanded specifity is double class Selector to be more specific.
+
+    for smooth transition for box shadow and make the icon clickable:
+        .nav__toggler {
+            opacity: 0.5;
+            transition: box-shadow 0.3s;
+        }
+    
+    the mobile version is finished.
+    -----------------------------------------------------
+    for desktop:
+    we will write a @media to hide the toggler and make the list horizontal.
+
+        @media screen and (min-width: 768px) {
+            .nav__toggler {
+                display: none;
+            }
+            .nav__list {
+                width: auto;
+                display: flex;
+                font-size: 1.6rem;
+                max-height: 100&;
+                opacity: 1;
+            }
+            .nav__item {
+                padding-right: 4rem;
+                border: 0;
+            }
+        }
+
+    initially the list is invisible in desktop.
+    so we add the max-height and opacity props to nav__list.
+
+    BONUS: fixing the logo positioning to be in the center.
+
+      <a class="nav__brand" href="/"
+        ><img src="images/logo.svg" alt="logo"
+      /></a>
+
+        .nav__brand {
+            transform: translateY(5px)
+        }
+
+
+
+    
+
 
 
 
