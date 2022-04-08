@@ -1155,3 +1155,166 @@ ________________________________________________________
     
     now we have the structure for the collapsible.
     later we can style the spacing between them, dark bg of the footer and other features.
+________________________________________________________
+27- Blocks
+    on the page we have multiple blocks for multiple sections.
+    semantically we can implement a block using section element.
+
+        <section class="block">
+        <h2>Heading</h2>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia atque
+            porro sint reiciendis optio quam, aspernatur harum rem ex labore?
+        </p>
+        </section>
+
+    temporarily we give the block a border to see things more clearly:
+
+        .block {
+            padding: 6rem 2rem;
+            border: 2px solid red;
+        }
+    
+    now we see the heading has extra margin on the top:
+
+        .block__heading {
+            margin-top: 0;
+        }
+    
+    now we need a variation of this block named baock--dark: 
+
+        <section class="block block--dark">
+        <h2 class="block__heading">Heading</h2>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia atque
+            porro sint reiciendis optio quam, aspernatur harum rem ex labore?
+        </p>
+        </section>
+
+        .block--dark {
+            background: #000;
+            color: #7b858b;
+        }
+    
+    the heading in the dark--block is not white:
+
+        .block--dark .block__heading {
+            color: #fff;
+        }
+    
+    some of these blocks are skewed to right or left.
+    the prefered solution is clippath. in part 2 Clipping Images.
+    https://bennettfeely.com/clippy
+    we create a custom polygon in this site.
+    we copy the generated polygon and paste it to new rule called block--skewed-right and left:
+
+        .block--skewed-right {
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0 80%);
+        }
+
+    for the left:
+
+        .block--skewed-left {
+            clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 0 100%);
+        }
+    
+    add to markup:
+        <section class="block block--dark block--skewed-right">
+    
+    because of Clipping we have uneven padding. 
+    so we shoud apply an extra paddings to skewed blocks.
+
+        .block--skewed-right {
+            padding-bottom: 10rem;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0 80%);
+        }
+    
+    with this approach if we want to change the padding for all blocks, it messes up our code.
+    we can define an isolated variable for block class:
+
+        .block {
+            --padding-vertical: 6rem;
+            padding: var(--padding-vertical) 2rem;
+            border: 2px solid red;
+        }
+    
+    then we set it to skewed version and use the calc function to change it:
+        .block--skewed-right {
+            padding-bottom: calc(var(--padding-vertical) + 4rem);
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0 80%);
+        }
+
+    with this approach we dont have to remember to update the body padding.
+    -----------------------------------------------------
+    now we jump to the next block. 
+    the text on the heade part is center aligned.
+    if we put the text-align prop in the block rule, then every component added to this section
+    is going to be centered.
+    we just want the header and text below it be centered.
+    so we wrap them inside a <header>:
+
+        <section class="block">
+        <header class="block__header">
+            <h2 class="block__heading">Heading</h2>
+            <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia
+            atque porro sint reiciendis optio quam, aspernatur harum rem ex
+            labore?
+            </p>
+        </header>
+        </section>
+    
+    and then style it to the center:
+
+        .block__header {
+            text-align: center;
+        }
+
+    when we change the screen size, the block changes too. 
+    in psd design its clear that the content is contained in container 1100px wide.
+    so if we have a wide screen, out content is not gonna change.
+    it makes it easier to read:
+
+        .container {
+            max-width: 1140px;
+        }
+    
+    this is a reusable class that we can apply anywhere. 
+    markup:
+        <section class="block container">
+    
+    for dark blocks we only want to limit the content to the container not the whole bg.
+    so we wrap the content to a div with a class of container:
+
+        <section class="block block--dark block--skewed-right">
+        <div class="container">
+            <h2 class="block__heading">Heading</h2>
+            <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia
+            atque porro sint reiciendis optio quam, aspernatur harum rem ex
+            labore?
+            </p>
+        </div>
+        </section>
+    
+    we also set the margin of the container to bring the container to center horizontally:
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+    
+    the implementation of the block is finished.
+    now we can remove the red border and make changes for wider screens:
+
+        @media screen and (min-width: 1024px) {
+            .block {
+                font-size: 1.8rem;
+            }
+        }
+________________________________________________________       
+28- Navigation Bars
+
+
+
+            
