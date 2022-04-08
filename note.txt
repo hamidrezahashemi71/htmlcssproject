@@ -840,9 +840,161 @@ ________________________________________________________
         }
     
     for 3 col grid on desktops:
-    
+
         @media screen and (min-width: 1024px) {
             .grid--1x3 {
                 grid-template-columns: repeat(3, 1fr);
+            }
+        }
+________________________________________________________
+24- Testimonials
+    now we have all the buid in blocks to build the testimonial componenet.
+    we start with a card. inside the card we have :
+            *a 1x2 grid. 
+            *image
+            *quote
+
+    first we add image and a experimental div to test the function:
+
+        <div class="card">
+            <div class="grid grid--1x2">
+                <img src="images/testimonial.jpg" alt="A happy, smiling customer" />
+                <div style="height: 100px; background: gold"></div>
+            </div>
+        </div>
+
+    we see that image size is fixed so in different screens the distribution of columns will not be equal.
+    we should make this image responsive:
+
+        .testimonial {
+            padding: 3rem;
+        }
+
+        .testionial__image {
+            width: 100%;
+        }
+    
+    next we add the red icon. it has fixed position.
+    so we use absolute positioning.
+    we put image and icon inside a container which has relative position.
+    then apply absolute positioning on the icon:
+
+        .testimonial__image > .icon-container {
+            position: absolute;
+            top: 3rem;
+            /* 32px is half of 64px (width of icon-container) to position icon in middle */
+            right: -32px; 
+        }
+    
+    to set the icon color: 
+    we define another skin to icon container componenet:
+
+        .icon-container--accent {
+            background: var(--color-accent);
+        }
+
+        .icon--white {
+            fill: #fff;
+        }
+
+        .icon--small {
+            width: 30px;
+            height: 30px;
+        }
+
+    then we use it in our testimonial.
+
+    the last part is adding the quote componenet instead of experimental div:
+    we just have to copy the quote componenet!
+    it seems the font size is too big on middle screen (768px).
+    and the left margin of qoute seems less than psd markup.
+    we can solve it by defining a @media:
+
+        @media screen and (min-width: 768px) {
+            .testimonial .quote, .testimonial .quote__author {
+                font-size: 2.4rem;
+            }
+            .testimonial .quote {
+                margin-left: 6rem ;
+            }
+        }
+________________________________________________________
+25- Callouts
+    it looks like a card. but there are differences:
+        *doesn't have shadow
+        *entire componenet has bg
+    instead of changing card, it is safer to define another componenet.
+    its a 2 column grid on desktop 
+    and one column grid on mobile. 
+    we define the componenet first:
+
+        <div class="callout callout--primary">
+
+    inside the component we define the grids for desktop and mobile:
+
+        <div class="grid grid--1x2"></div>
+    
+    insidethe grid we have two items:
+        *heading and text
+        *button
+        
+        <div class="callout callout--primary">
+        <div class="grid grid--1x2">
+            <h3>Ready to get started?</h3>
+            <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam
+            suscipit est harum veniam ab iusto aperiam magnam assumenda nobis
+            similique?
+            </p>
+            <a href="" class="btn btn-secondary">Get started</a>
+        </div>
+        </div>
+
+    then we style it:
+    
+        .callout {
+            padding: 4rem;
+            border-radius: 5px;
+        }
+
+        .callout--primary {
+            background: var(--color-primary);
+            color: #fff;
+        }
+        .callout__heading{
+            color: #fff;
+            margin-top: 0;
+            font-size: 3rem;
+        }
+
+        .callout .btn{ 
+            justify-self: center;
+            align-self: center;
+        }
+    
+    it is pretty close. but here the button have more horizontal padding.
+    OOP says we should seperate content from container.
+    so we define a reusable skin for buttons in BUTTONS section:
+
+        .btn--stretched {
+            padding-left: 6rem;
+            padding-right: 6rem;
+        }
+    
+    the difference for the desktop version is 
+        text stretching to right
+        left align text.
+        button left margin
+        
+        @media screen and (min-width: 768px) {
+            .callout .grid--1x2 {
+                grid-template-columns: 1fr auto ;
+            }
+            .callout__content {
+                text-align: left;
+            }
+            .callout .btn {
+                justify-self: start;
+                margin: 0 2rem;
             }
         }
