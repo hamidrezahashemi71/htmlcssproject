@@ -1746,6 +1746,115 @@ ________________________________________________________
             max-width: 700px;
             margin: 0 auto;
         }
-
+________________________________________________________
+32- Plans Block
+    hints: 
+    desktop: 
+        popular plan slightly larger
+        hover: larger 
     
+    inserting plans: 
+    <section class="block container">
+      <div class="grid grid--1x3">
+        <div class="plan">
+          <div class="card card--secondary">
+            <header class="card__header">
+              <h3 class="plan__name">Entry</h3>
+              <span class="plan__price">$14</span>
+              <span class="plan__billing-cycle">/month</span>
+              <span class="badge badge--secondary badge--small"> %10 OFF </span>
+              <span class="plan__description">Easy start on the cloud</span>
+            </header>
+            <div class="card__body">
+              <ul class="list list--tick">
+                <li class="list__item">Unlimited Websites</li>
+                <li class="list__item">Unlimited Bandwidth</li>
+                <li class="list__item">100 GB SSD Storage</li>
+                <li class="list__item">3 GB RAM</li>
+              </ul>
+              <button class="btn btn--outline">buy now</button>
+            </div>
+          </div>
+          </div>
+          <div class="plan plan--popular">
+          <div class="card card--primary">
+            <header class="card__header">
+              <h3 class="plan__name">Entry</h3>
+              <span class="plan__price">$14</span>
+              <span class="plan__billing-cycle">/month</span>
+              <span class="badge badge--primary badge--small"> %10 OFF </span>
+              <span class="plan__description">Easy start on the cloud</span>
+            </header>
+            <div class="card__body">
+              <ul class="list list--tick">
+                <li class="list__item">Unlimited Websites</li>
+                <li class="list__item">Unlimited Bandwidth</li>
+                <li class="list__item">100 GB SSD Storage</li>
+                <li class="list__item">3 GB RAM</li>
+              </ul>
+              <button class="btn btn--outline">buy now</button>
+            </div>
+          </div>
+        </div>
+        <div class="plan">
+          <div class="card card--secondary">
+            <header class="card__header">
+              <h3 class="plan__name">Entry</h3>
+              <span class="plan__price">$14</span>
+              <span class="plan__billing-cycle">/month</span>
+              <span class="badge badge--secondary badge--small"> %10 OFF </span>
+              <span class="plan__description">Easy start on the cloud</span>
+            </header>
+            <div class="card__body">
+              <ul class="list list--tick">
+                <li class="list__item">Unlimited Websites</li>
+                <li class="list__item">Unlimited Bandwidth</li>
+                <li class="list__item">100 GB SSD Storage</li>
+                <li class="list__item">3 GB RAM</li>
+              </ul>
+              <button class="btn btn--outline">buy now</button>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    apply gap between plans. define a new class to section:
+        <section class="block container block-plans">
+        
+        .block-plans .grid {
+            gap: 4rem;
+        }
+    
+    on mobile we dont want the plans get larger.
+    so mobile version is done. 
+
+    now we set the settings for wider screens.
+    for 1024px it looks fine but for tablets the card strechens too wide.
+    we want to make it a little smaller and put it right in the center.
+    first for desktop:
+    we have to define the hover and primary card enlargement.
+    in PLANS:
+
+        .plan--popular {
+            transform: scale(1.1)
+        }
+
+        .plan {
+            transition: transform 0.5s ease-out;
+        }
+
+        .plan:hover {
+            transform: scale(1.05);
+        }
+
+        .plan--popular:hover {
+            transform: scale(1.15);
+        }
+    
+    we're done with this componenet.
+    save in a seperate file and upload a new version to the git.
+
+
+
+        
 

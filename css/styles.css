@@ -195,12 +195,11 @@ a {
 .btn {
     border-radius: 40px;
     border: 0;
-    /* to make the pointer into a hand */
     cursor: pointer;
     font-size: 1.8rem;
     font-weight: 600;
     margin: 1rem 0;
-    padding: 2rem 3rem;
+    padding: 2rem 4vw;
     text-align: center;
     text-transform: uppercase;
     white-space: nowrap;
@@ -354,6 +353,21 @@ a {
     font-size: 2rem;
     font-weight: 300;
     letter-spacing: 1px;
+}
+
+.plan--popular {
+    transform: scale(1.1)
+}
+
+.plan {
+    transition: transform 0.3s ease-out;
+}
+
+.plan:hover {
+    transform: scale(1.05);
+}
+.plan--popular:hover {
+    transform: scale(1.15);
 }
 
 .plan--popular .card__header {
@@ -724,5 +738,20 @@ a {
 @media screen and (min-width: 768px) {
     .block-domain__prices {
         grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    }
+}
+
+/* PLAN BLOCK */
+.block-plans .grid {
+    gap: 8rem 4rem;
+}
+
+@media screen and (max-width: 1024px) {
+    .block-plans {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    .plan--popular {
+        transform: scale(1)
     }
 }
