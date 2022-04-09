@@ -14,6 +14,11 @@
 }
 
 /* TYPOGRAPHY */
+::selection {
+    background: var(--color-primary);
+    color: #fff;
+}
+
 html {
     font-size: 62.5%;
 }
@@ -124,7 +129,6 @@ a {
 .list {
     list-style: none;
     padding-left: 0;
-    color: var(--color-heading);
 }
 
 .list--inline .list__item {
@@ -137,6 +141,7 @@ a {
     list-style-image: url(../images/tick.svg);
     padding-left: 3rem;
     letter-spacing: 1px;
+    color: var(--color-heading);
 }
 
 .list--tick .list__item {
@@ -401,21 +406,21 @@ a {
 /* MEDIA OBJECTS */
 .media {
     display: flex;
-}
-
-.media__title {
+    margin-bottom: 4rem;
+  }
+  
+  .media__title {
+    font-weight: 500;
     margin-top: 0;
-    font-size: 2.4rem;
-}
-
-.media__body {
-    margin-left: 1rem;
-    font-size: 2rem;
-}
-
-.media__image {
-    margin-top: 1.1rem;
-}
+  }
+  
+  .media__body {
+    margin: 0 2rem;
+  }
+  
+  .media__image {
+    margin-top: 1rem;
+  }
 
 @media screen and (min-width: 1024px) {
     .media__title {
@@ -601,17 +606,19 @@ a {
     color: #7b858b;
 }
 
-.block--dark .block__heading {
+.block--dark h1,
+.block--dark h2,
+.block--dark h3 {
     color: #fff;
 }
 
 .block--skewed-right {
     padding-bottom: calc(var(--padding-vertical) + 4rem);
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0 80%);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0 90%);
 }
 .block--skewed-left {
     padding-bottom: calc(var(--padding-vertical) + 4rem);
-    clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 0 100%);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0 100%);
 }
 
 .block__header {
@@ -753,5 +760,52 @@ a {
     }
     .plan--popular {
         transform: scale(1)
+   }
+} 
+
+/* FEATURE BLOCK */
+.feature {
+    gap: 4rem 2rem;
+    margin: 12rem 0;
+}
+
+.feature:first-of-type {
+    margin-top: 5rem;
+}
+
+.feature__heading {
+    margin: 1rem 0;
+}
+
+.feature__image {
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .feature:nth-of-type(even) .feature__content {
+        order: 2;
+    }
+}
+
+/* SHOWCASE BLOCK */
+.block-showcase__image > img {
+    width: 100%;
+}
+
+.block-showcase__heading {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .block-showcase .grid {
+        grid-template-columns: 50% 50%;
+    }
+    .block-showcase__image {
+        justify-self: end;
+    }
+    
+    .block-showcase__image > img {
+        width: auto;
+        max-width: 700px;
     }
 }

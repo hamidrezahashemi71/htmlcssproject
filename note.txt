@@ -1983,11 +1983,201 @@ ________________________________________________________
         .feature:first-of-type {
             margin-top: 5rem;
         }
+________________________________________________________
+34- Showcase Block
+    in this block we are Showcasing an aspect of the website.
+    on mobile is very straightforward:
+        1x1 grid
+            image
+            several media Objects
+        on desktop:
+        we should put the image (ipad image) in a way that:
+            user sees a part of the image on smaller screen and part of image is not visible.
+            this is without a horizontal scrolling.
+            when widening the screen, the unvisible part becomes visible.
+            implementing this is the tricky part of this section. 
+
+            we are going to solve this problem step by step.
+            first we add the section, header, image and a paragraph.
+            after that we will replace the <p> with media Object:
+
+    <section class="block block--dark block--skewed-right">
+      <header class="block">
+        <h2>User-Friendly Control Panel</h2>
+      </header>
+      <div class="container grid grid--1x2">
+        <img src="images/ipad.png" alt="" />
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque autem
+          unde non vero explicabo! Nam possimus numquam minima beatae harum.
+        </p>
+      </div>
+    </section>
+
+        our <h2> is blue. instead of defining a new class, we can change the root style 
+        for all <h> in dark blocks:
     
+            .block--dark h1,
+            .block--dark h2,
+            .block--dark h3 {
+                color: #fff;
+            }
 
+        first we have to address the responsiveness of the image in mobile version:
 
+        <img class="block-showcase_image" src="images/ipad.png" alt="" />
 
+            .block-showcase_image {
+                width: 100%;
+            }
 
+        in wider screens we dont want the entire image on 1st column.
+        in other words WE DONT WANT a responsive image.
+        we want to show the image in actual size so part of it end up outside the screen. 
 
+            @media screen and (min-width: 768px) {
+                .block-showcase__image {
+                    width: auto;
+                }
+            }
+
+        with this implementation 1st column is very wide and 2nd column is squashed.
+        we want to make sure each column is exactly taking 50% of its parent (container)
+        so we redefine the column template of our grid for wider screens:
+
+            <section class="block block--dark block--skewed-right block-showcase">
+      
+            @media screen and (min-width: 768px) {
+                .block-showcase .grid {
+                    grid-template-columns: 50% 50%;
+                }
+                .block-showcase__image {
+                    width: auto;
+                }
+            }
         
+        previously we had 1fr 1fr so the columns werent even. 
+        now part of the image is under the text.
+        we have to align this image to the right side of its column.
+    
+            @media screen and (min-width: 768px) {
+                .block-showcase__image {
+                    justify-self: end;
+                }
+            }
+
+        when expanding the browser, the grid gets wider but image gets wider too. 
+        this is not what we want.
+        our image never should grow larger than 700px.
+        so we apply a max-width of 700px in @media.
+
+            @media screen and (min-width: 768px) {
+                .block-showcase__image {
+                    width: auto;
+                    max-width: 700px
+                    justify-self: end;
+                }
+            }
+    
+        now the layout is working fine. 
+        we should wrap this image in picture element to provide larger images.
+
+        <picture class="block-showcase__image">
+          <source
+            type="image/webp"
+            srcset="images/ipad.webp 1x, images/ipad@2x.webp 2x"
+          />
+          <source
+            type="image/png"
+            srcset="images/ipad.png 1x, images/ipad@2x.png 2x"
+          />
+          <img src="images/ipad.png" alt="" />
+        </picture>
+
+        now we have to assign the class of image to picture element.
+        and in @media we have to make changes and target the image:
+
+            @media screen and (min-width: 768px) {
+                .block-showcase .grid {
+                    grid-template-columns: 50% 50%;
+                }
+                .block-showcase__image {
+                    justify-self: end;
+                }
+                
+                .block-showcase__image > img {
+                    width: auto;
+                    max-width: 700px;
+                }
+            }
+        
+        the image is fine. so our first column is done.
+        now we have to replace the <p> with media objects.
+        we use <ul> and <li> instead of <div> to make our markup semantic. 
+        so that the search engines can read our markup better. 
+
+        <ul class="list">
+          <li>
+            <div class="media">
+              <div class="media__image">
+                <svg class="icon icon--primary">
+                  <use xlink:href="images/sprite.svg#snap"></use>
+                </svg>
+              </div>
+              <div class="media__body">
+                <h3 class="media__title">Easy Start & Managed Updates</h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Similique, dicta a repellat voluptatibus quos provident.
+                  Ducimus ullam rerum error odit?
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="media">
+              <div class="media__image">
+                <svg class="icon icon--primary">
+                  <use xlink:href="images/sprite.svg#growth"></use>
+                </svg>
+              </div>
+              <div class="media__body">
+                <h3 class="media__title">Staging, GIT & WP-CLI</h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Similique, dicta a repellat voluptatibus quos provident.
+                  Ducimus ullam rerum error odit?
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="media">
+              <div class="media__image">
+                <svg class="icon icon--primary">
+                  <use xlink:href="images/sprite.svg#wordpress"></use>
+                </svg>
+              </div>
+              <div class="media__body">
+                <h3 class="media__title">Dynamic Caching & More</h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Similique, dicta a repellat voluptatibus quos provident.
+                  Ducimus ullam rerum error odit?
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        * the list class applied to <ul> is for removing bullets and padding.
+
+    looks like we are done. 
+    BONUS TRICK: when selecting a text on dark bg, we want the color of text or selection to be changed:
+    in Typography section:
+
+        ::selection {
+            background: var(--color-primary);
+            color: #fff;
+        }
 
