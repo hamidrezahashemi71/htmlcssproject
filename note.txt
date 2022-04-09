@@ -1944,6 +1944,48 @@ ________________________________________________________
     
     now we have build the componenet now we have to make several and put it in a block:
 
+        <section class="block container">
+            <articles>
+        </section>
+    
+    vertical margins between features:
+
+        .feature {
+            margin: 12rem 0;
+        }
+    
+    to change the order of columns alternately on wide screens:
+    first: define a class for each <div> in <article>:
+            <div class="feature__content">
+
+    Then in @media we are going to target every second feature with Pseudo class Selector:
+
+        @media screen and (min-width: 768px) {
+            .feature:nth-of-type(even) .feature__content {
+                order: 2;
+            }
+        }
+    
+    now we can add the heading and paragraph on the top:
+
+    <section class="block container">
+      <header class="block__header">
+        <h2>Host on the Cloud to Keep Growing</h2>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel,
+          similique?
+        </p>
+      </header>
+
+    the space between first feature and header is very much.
+    we can target it with Pseudo class Selector again:
+
+        .feature:first-of-type {
+            margin-top: 5rem;
+        }
+    
+
+
 
 
 
