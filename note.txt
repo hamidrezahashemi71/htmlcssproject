@@ -1598,14 +1598,154 @@ ________________________________________________________
                 align-self: center;
             }
         }
+________________________________________________________
+30- Optimizing Images
+    reducing image sizes based on the sized used by the website.
+    example: banner.png is 1532px width by default. 900kb
+    on desktop we only need half of 1140px : 570px
+    on mobile it isnt going to stretch more than 500px.
+    STRATEGY:   serve a 570px wide in range
+                let the browser do small resizing
+                provide a 2x version for high density screens (RETINA)
+                3x: original is 1532px by default. enlarging to 1710px doesnt make sense.
+                after saving the images with optimized sizes, we can convert them to WebP
+                https://cloudconvert.com 
+                now the file siez has reduced to 43kb
+                we change the markup. wrap the img in a <picture> and define a source set:
 
+        <picture>
+          <source
+            type="image/webp"
+            srcset="images/banner.webp 1x, images/banner@2x.webp 2x" />
+          <source
+            type="image/png"
+            srcset="images/banner.png 1x, images/banner@2x.png 2x" />
+          <img class="hero__image" src="images/banner.png" alt="Banner"
+        /></picture>
+________________________________________________________
+31- Domain Block
+    next we are going to make the second part of the page which is below hero. 
+    we call it the domain block. we have:
+        Heading
+        some text
+        search box
+        domain prices 
+    we dont include the cards. they present our plans. 
+    plans and domain lookup are 2 completely different concepts.
 
+    inserting heading and text:
+    <section class="block container">
+      <header class="block__header">
+        <h2>Starting at $9 per month</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, rem.
+        </p>
+      </header>
+    </section>
 
+    inserting an input group for searchbox and search icon:
+        <button class="btn btn--accent">
+          <svg class="icon icon--primary icon--small">
+            <use xlink:href="images/sprite.svg#search"></use>
+          </svg>
+          Search
+        </button>
 
+    now we want to size the icon. the best place is the button section.
+    because in future we may want another button with an icon. 
+    so we make this reusable:
+
+        .btn .icon {
+            width: 2rem;
+            height: 2rem;
+            margin-right: 1rem;
+            vertical-align: middle; #make the icon come to middle of text.
+        }
+
+    now we want the add the shadow on the input group.
+    one solution is to define a utility class for adding shadows:
+    the more we use this kind of utility classes, the more our code is going to talk about styling.
+    there are some frameworks like Tailwind which are based on the concept of utility-first/atomic
+    these frameworks has various utilities:
+        *box-shadow
+        *border
+        *font
+        *text-align
+        *etc
+
+    some people love them others hate them. it is optional.
+    in this course we dont use utility class. 
+    so for box-shadow we define a specific rule for this input instance:
+
+        <section class="block container block-domain">
+
+        .block-domain .input-group {
+            box-shadow: 0 0 30px 20px #e6ebee;
+            border: 0;
+            margin-top: 3.5rem; #space between input-group and text
+        }
+    
+    now we add the domain prices:
+    mobile:
+        the items of the list are layed out in rows and columns.
+        so we should use a grid to define them:
+
+            <ul class="list block-domain__prices"></ul>
+        
+        on mobile we have 3x2 grid: 
+
+        .block-domain__prices {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 6rem);
+        }
+    
+        now we can add the items. and wrap one of them in a badge
+      <ul class="list block-domain__prices">
+        <li><span class="badge badge--secondary">.com $9</span></li>
+        <li>.sg $10</li>
+        <li>.space $11</li>
+        <li>.info $14</li>
+        <li>.net $10</li>
+        <li>.xyz $10</li>
+      </ul>
+
+        font size and text alignment to center:
+        .block-domain__prices {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 6rem);
+            font-size: 2rem;
+            font-weight: 600;
+            justify-items: center;
+        }
+
+    the mobile version is ready.
+    now we set the settings for wider screens:
+
+        @media screen and (min-width: 768px) {
+            .block-domain__prices {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+        }
+    
+    the auto-fit is a prettier prop to assign every line to number of elements. 
+    with this approach if tomorrow we add another item to the list,
+    this code will calculate and make the necessery changes to fit them in one line.
+
+    as we see in standard version, the list and input-group are not taking the entire 
+    width of the page. 
+    by setting the max-width of this 2 elements to 700px and setting the horizontal margin to auto.
+
+        .block-domain .input-group {
+            margin: 4rem auto;
+            max-width: 700px;
+        }
+
+        .block-domain__prices {
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
     
 
-
-
-
-            
