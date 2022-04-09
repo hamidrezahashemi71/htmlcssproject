@@ -2385,9 +2385,56 @@ ________________________________________________________
 
             .footer__brand img {
                 width: 100%;
+                max-width: 230px; #prevent too big image in mobile
             }
-        
+________________________________________________________
+37- Putting it All Together
+    now all the buil in blocks are ready.
+    its time to put them Together.
+    we should add a header of the page. Then add these blocks:
+        *navbar 
+        *hero 
+        *Domain Block
+    
+    when we add the domain block, we get a horizontal scrolling.
+    its because of the search button that pops out of its container.
+    next we are going to solve this layout issue.
+________________________________________________________
+38- Troubleshooting Layout Issues
+    when confronting issues like this, we should isolate the problem.
+    better we isolate the problem, faster we can find the cause and fix the issue.
+    we create a new file called playground.html
+    add a basic html template 
+    copy stylesheet rules to playground and try to isolate the issue.
+    in <body> we add the block that contains the issue, here: blockdomain.html 
+    open playground with live Server.
 
+    on wide screen we dont have any issues.
+    the issue is on small screens.
+    we delete the elements one by one in DevTools to see if the problem still happens.
 
+    we set borders temporarily to find the problem.
+    the input field is growing larger of its parent at some point.
+    we delete the button to verify this assumption.
 
+    we still have the problem.
+    so something is wrong with either:
+        *input-group
+        or
+        *input field 
 
+    we see the width of the input field is larger than input group (its container).
+    where is this widths come from? 
+    in the computed tab we can find the width root.
+
+    we find the root and set a width of input field to zero.
+    and then apply it to stylesheet.
+
+        .input-group .input {
+            border: 0;
+            flex-grow: 1;
+            padding: 1.5rem 2rem;
+            width: 0;
+        }
+    
+    we can inspect the page and fix any other visible issues or refactor code.
