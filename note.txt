@@ -2180,4 +2180,18 @@ ________________________________________________________
             background: var(--color-primary);
             color: #fff;
         }
+________________________________________________________
+35- Testimonials Block
+    we have all the componenets we need to build this block. 
+    we build a section and a header with a paragraph.
+    after that we import the testimonial componenet earlier. 
+    no further changes is needed.
+    only we have extra space between the header and the card. 
+    the best place to change the margin is in block__header 
+    because we dont want to repeat this header anywhere else:
+
+        .block__header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
 
