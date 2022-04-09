@@ -2194,4 +2194,200 @@ ________________________________________________________
             text-align: center;
             margin-bottom: 3rem;
         }
+________________________________________________________
+36- Footer
+    the footer has a couple of challenging parts 
+    in mobile:
+        collapsibles
+    in desktop:
+        the collapsibles are always expanded.
+    
+    what we need to do is to write a @media query and hide the chevron and show the content area.
+
+    other tricky part is the placement of the logo. 
+    on desktop:
+        placed in the first column.
+    on mobile:
+        placed in the last row.
+    
+    we'll add the callout section later.
+
+    first we define a footer section with class of block, block--dark and footer.
+    the block--dark class is for the text stylings.
+    we set the bg color on footer class:
+
+    <footer class="block block--dark footer"></footer>
+
+        .footer {
+            background: #232323;
+        }
+    
+    inside the footer we have a container which is a grid. 
+    on mobile: 1x1 grid 
+    on desktop: 1x5 grid
+
+    now we add the template for collapsible componenet. 
+
+    <footer class="block block--dark footer">
+      <div class="container grid">
+        <section class="collapsible collapsible--expanded">
+          <header class="collapsible__header">
+            <h2 class="collapsible__heading">Item1</h2>
+            <svg class="icon icon--white collapsible__chevron">
+              <use xlink:href="images/sprite.svg#chevron"></use>
+            </svg>
+          </header>
+          <div class="collapsible__content">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
+            doloribus aspernatur iure laborum sit aliquid a delectus omnis quos
+            neque.
+          </div>
+        </section>
+      </div>
+    </footer>
+
+    *we replace the <div> with <section> for collapsible so our code be more semantic.
+    *because we have multiple sections in our footer. 
+
+    we copy the added componenet 4 times. (we have 4 collapsibles.)
+    we remove the <collapsible--expanded> to make the collapsibles hidden by default.
+
+    now we should add some padding and a border between the items.
+    so we assign a class to each section and style them:
+
+    <section class="collapsible footer__section">
+
+        .footer__section {
+            padding: 2rem;
+            border-bottom: 1px solid #393939;
+        }
+
+    making item titles uppercase and slightly thinner.
+    it is better to assign a specific class and make the changes there:
+
+    <h2 class="collapsible__heading footer__heading">Item4</h2>
+
+        .footer__heading {
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+    
+    now lets add the logo and copyright index.
+    after the last section we add another section with a class of footer__brand:
+
+        <section class="footer__brand">
+          <img src="images/logo.svg" alt="" />
+          <p class="footer__copyright">Copyright 2020 Mosh Hamedani</p>
+        </section>
+
+    now we have to make it come to center and seperate from items:
+
+        .footer__brand {
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+    now we have to style the copyright notice:
+
+        .footer__copyright {
+            font-size: 2.1rem;
+            color: #fff;
+            opacity: 0.3;
+        }
+    
+    we have the basics right. now we have to replace the paragraphs in items with lists.
+    but first we work out for wider screens.
+    we give to grid division a new class: 
+
+        <div class="container grid footer__sections">
+
+        @media screen and (min-width: 768px) {
+            .footer__sections {
+                grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+            }
+        }
+
+    now the items are horizontal in wide screen. 
+    we have to:
+        *remove the chevrons
+        *show the content of all sections. 
+
+        @media screen and (min-width: 768px) {
+            .footer .collapsible__chevron {
+                display: none;
+            }
+            .footer .collapsible__content {
+                max-height: 100%;
+                opacity: 1;
+            }
+        }
+    
+    now we have to move the logo to the left side,
+    bring the logo to top,
+    add right margin to it,
+    remove the border-bottom from items,
+    reduce size of headings:
+
+        @media screen and (min-width: 768px) {
+            .footer__sections {
+                grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+            }
+
+            .footer .collapsible__chevron {
+                display: none;
+            }
+
+            .footer .collapsible__content {
+                max-height: 100%;
+                opacity: 1;
+            }
+
+            .footer__brand {
+                margin-top: 1rem;
+                margin-right: 4rem;
+                order: -1;
+            }
+
+            .footer__copyright {
+                font-size: 1.5rem;
+            }
+
+            .footer__section {
+                border-bottom: 0;
+            }
+
+            .footer__heading {
+                font-size: 1.6rem;
+            }
+        }
+    
+    now its time to replace the <p> with our hyperlink list.
+        example:
+    
+            <ul class="list">
+              <li><a href="#">Website Hosting</a></li>
+              <li><a href="#">Free Automated Wordpress</a></li>
+              <li><a href="#">Migrations</a></li>
+            </ul>
+        
+        changing the default link color coming from the browser:
+
+            .footer a {
+                color: #777;
+                transition: color 0.3s;
+            }
+
+            .footer a:hover {
+                color: #fff;
+            }
+    
+    only problem left is making logo responsive so the overlay not to happen. 
+
+            .footer__brand img {
+                width: 100%;
+            }
+        
+
+
+
 
