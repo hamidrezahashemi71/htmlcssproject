@@ -1851,8 +1851,99 @@ ________________________________________________________
             transform: scale(1.15);
         }
     
+    now its time to make the necessery changes for wider screens:
+
+        @media screen and (max-width: 1024px) {
+            .block-plans {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            .plan--popular {
+                transform: scale(1)
+        }
+        } 
+    
     we're done with this componenet.
     save in a seperate file and upload a new version to the git.
+________________________________________________________
+33- Features Block
+    we have a repetative pattern. 
+        1x2 grid
+            subcontent on one side
+            image another side 
+    this instance is repeated several times.
+    so we are going to build the features pattern in this lesson.
+    next we are going to add header and repeat this pattern to build the entire block.
+
+    we use <article> for representing this componenet.
+    we use <article> to represent any self contained piece of content. 
+    each of the features (subcontent & image) are an article. 
+
+    in the first article we have some elements:
+        icon
+        heading
+        text
+        link
+    
+    we wrap all these elements in a <div>
+
+    <article class="grid grid--1x2 container">
+      <div>
+        <span class="icon-container">
+          <svg class="icon icon--primary">
+            <use xlink:href="images/sprite.svg#computer"></use>
+          </svg>
+        </span>
+        <h3>Super Easy to Use</h3>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae
+          voluptatem veritatis est accusantium nesciunt necessitatibus
+          repudiandae facilis. Reprehenderit, dicta eligendi!
+        </p>
+        <a href="#" class="link-arrow">Learn More</a>
+      </div>
+    </article>
+
+    now we style the first column of the grid.
+    space between the icon and the heading. (from top margin of the heading)
+
+        <h3 class="feature__heading">Super Easy to Use</h3>
+
+        .feature__heading {
+            margin: 1rem 0;
+        }
+
+    now we add the image for column 2:
+    after resizing and converting for better Optimizing:
+
+      <picture>
+        <source
+          type="image/webp"
+          srcset="images/easy.webp 1x, images/easy@2x.webp 2x" />
+        <source
+          type="image/jpg"
+          srcset="images/easy@2x.jpg 1x, images/easy@2x.jpg 2x" />
+        <img class="hero__image" src="images/easy.jpg" alt="easy to use"
+      /></picture>
+
+      now we style the second column of the grid:
+      space between image and subcontent in mobile:
+
+          <article class="grid grid--1x2 feature">
+
+        .feature {
+            gap: 4rem;
+        }
+
+    making the image responsive:
+          <img class="hero__image" src="images/easy.jpg" alt="easy to use"/>
+
+        .feature__image {
+            width: 100%;
+        }
+    
+    now we have build the componenet now we have to make several and put it in a block:
+
 
 
 
