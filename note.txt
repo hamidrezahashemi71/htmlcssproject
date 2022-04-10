@@ -2462,3 +2462,120 @@ ________________________________________________________
     example:
         <div class="feature__content" data-aos="fade-right">
         <picture class="feature__image" data-aos="zoom-in-left">
+________________________________________________________
+40- Search Engine Optimization (SEO) 
+    this is a comprehensive topic and needs its own course.
+    but we can add a few things to our website to make it more search engine friendly.
+    1. Title: must be a catchy title 
+    2. Meta tags:
+        *description
+            <meta name="description" content="Deploy your Website in less than 60 seconds!">
+        *Open Graph Protocol Meta elements:
+            for preview of the website on social media links.
+            <meta property="og:title" content="page title"> 
+            <meta property="og:description" content="a compelling description"> 
+            <meta property="og:type" content="website"> 
+            <meta property="og:image" content="url of an image"> 
+            <meta property="og:url" content="url of our website"> 
+
+            to learn more:
+            https://ogp.me 
+________________________________________________________
+41- HTML and CSS Validation
+    now we shoud validate our markup and make sure it follows the rules that all browsers expect.
+    google html validator
+    https://validator.w3.org
+
+    upload html or paste code and solve the issues based on directions.
+
+    because in our CSS we are not relying on our markup, changes wont mess up the page.
+
+    similary we should validate CSS code.
+    google css validator.
+    https://jigsaw.w3.org/css-validator/
+________________________________________________________
+42- Building for Production
+    before deploying our website we should prepare it for production.
+    we use a build tool for that.
+    with build tool we can:
+        *combine CSS and JS files 
+            to reduce the number of http requests sent from the browser to the server.
+        *Minify JS/CSS files 
+            to remove all the extra spaces, comment and unnecessary characters.
+            so reduce the size of assets and deliver smaller files to user
+        *Optimize Images 
+            we've been doing this manually in ps and cloudconvert.
+            but we can use command line tools to automate this process. 
+        
+        depending on the project and its complexity there are many other features.
+
+        What tools should we use? 
+        *Webpack
+            the most popular 
+            CONS: requires a lot of configuration. hard for beginners
+        *Rollup
+        *Parcel 
+            https://parceljs.org 
+            it is a fast, zero configuration web application bondler.
+            perfect for beginners. 
+            we are going to use parcel for building our website in this course.
+
+    1: install nodejs on your machine. 
+    https://nodejs.org 
+    
+    2: vscode --> view --> terminal
+        node -v
+        npm init-y 
+            package.json is added to the project.
+            now we are going to install parcel as a third party dependency.
+            after that we will see parcel listed in this file.
+            back to terminal window.
+        installing the parcel : npm i -D parcel-bundler 
+            now parcel is added to our json file.
+            "D" in install code is short for Development dependency.
+            it means we use parcel as a part of our Development but we wont deploy this to production.
+             in other words: this is not a library we want to ship to our website.
+            to change the version of parcel in terminal: npm i -D parcel-bundler@1.12.4
+        we have another folder in our project: node_modules
+            when we install using npm it will be stored in this folder.
+            there are many folders which are third party libs.
+            one of this folders is parcel.
+                parcel is dependant in other libs whic could be dependant to other libs.
+            we dont want to include all these folders in our repository because:
+                it will increase the size of repository
+                it is unnecessary.
+            to exclude this from repository we have to create a special file named .gitignore
+
+            terminal: use parcel to launch our website:
+            .bin: is where our binary or executable third party libs are installed:
+                node_modules/.bin/parcel
+            better way to install parcel globally: npm i -g parcel-bundler
+            now we can call it from any folders on this machine.
+                parcel index.html
+            now parcel comes with its own Development server and is running at:
+                http://localhost:1234
+            this is not a live server. it means if we want to use parcel we should go to parcel server.
+
+            we have 2 new folders:
+                .cache 
+                dist
+            these are automatically created by parcel as building our website. 
+            we add them to .gitignore
+
+            now with parcel Development server, we keep working on website.
+            when we are done, we will build it for production.
+
+            terminal: parcel build index.html
+
+            all the assets are stored in dist folder.
+
+            source Control panel and make a commit.
+
+
+
+        
+
+
+
+
+        
