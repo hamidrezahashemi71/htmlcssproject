@@ -2570,6 +2570,49 @@ ________________________________________________________
             all the assets are stored in dist folder.
 
             source Control panel and make a commit.
+________________________________________________________
+43- Pushing to GitHub
+    github is the most popular git hosting platform in the world.
+    using github we can store our code in the cloud.
+    for using a hosting service that works with github, we need to store the code in the cloud.
+    we say to hosting server: 
+        "I have a repository in github
+        so take the latest version of my code, build it and deploy it."
+    1: sign up in github 
+        https://github.com 
+    2: create a repository
+        now we have an empty git repository git on github.
+    3: configure the repository to talk to it in the cloud.
+        so when we are ready to deploy our website and make it public,
+        we push the code from our local repository to this repository in the cloud. 
+        copy and paste pushing code to terminal window:
+
+            git remote add origin https://github.com/hh7192/htmlcssproject.git
+            git branch -M main
+            git push -u origin main
+
+        first command: adding a remote repository.
+        second command: changing the name of the default branch in git.
+        third command: push our main branch or main line of work to origin (our repository)
+            TODO: learn GitHub 
+    4: now we can see the latest version of our code and all the commits we've made in github.
+    5: walking through a typical work flow. 
+        everyday we might make several commits as working on the website. 
+        these are stored at local store not in the github. 
+        at some point when we are ready to share with others or deploy our website, 
+            we need to push all these commits to our github repository.
+        for that in terminal: git push 
+
+    now we are ready to deploy our website!
+________________________________________________________
+44- Deployment
+    the final step is shipping the website.
+    we are going to use a service called nelify. 
+    1: create a new account:
+        https://netlify.com 
+        
+        deploy the website:
+            https://firstproject-double-h.netlify.app
 
 
 
