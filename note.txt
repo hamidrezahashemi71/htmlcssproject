@@ -2438,3 +2438,27 @@ ________________________________________________________
         }
     
     we can inspect the page and fix any other visible issues or refactor code.
+________________________________________________________
+39- Animations
+    we want to add some animations to take the page to the next level.
+    the animations must be shown only when the user scrolls up and down and the elements become visible.
+    to do that we are going to use a js library called AOS 
+    google AOS animation 
+    https://michalsnik.github.io/aos 
+    we see the examples here.
+    from their github page we can find the needed scripts.
+    https://github.com/michalsnik/aos 
+    we simply can add the stylesheet to our header.
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> 
+    
+    next we add the js code after our main js code at the end.
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+    
+    now we want to animate different animations to different columns of grid.
+    we can apply that after the class of each section content in data-aos attribute.
+    example:
+        <div class="feature__content" data-aos="fade-right">
+        <picture class="feature__image" data-aos="zoom-in-left">
