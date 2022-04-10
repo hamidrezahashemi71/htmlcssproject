@@ -2613,6 +2613,47 @@ ________________________________________________________
         
         deploy the website:
             https://firstproject-double-h.netlify.app
+        
+        after this any changes after pushing to the github, will automatically done by netlify.
+        this is called continious deployment.
+________________________________________________________
+45- Measuring the Site's Performance
+    https://web.dev/measure 
+
+    enter the address of your website:
+    https://firstproject-double-h.netlify.app/
+
+    run audit.
+
+    there we can see the Performance attributes of our site:
+        *Performance
+        *Accessibility
+        *Best Practices
+        *SEO 
+
+    we can make these numbers better by instructions given by the site.
+    example: Accessibility issue:
+                Form elements do not have associated lables.
+                we can add lables to our forms:
+                we add an extra attribute to our input called aria-label:""
+                it is short form for Accessible Rich Internet Application.
+
+        <input
+          aria-label="Domain"
+          type="text"
+          class="input"
+          placeholder="Enter domain name here"
+        />
+
+    example2: links dont have a discernible name.
+                it means visible names. 
+                SOLUTION: giving an aria-label to all links.
+    
+    for performance it is almost impossible to get 100% unless sacrificing the maintainibility of the code.
+    
+    example3: Performance:
+        deleting normalize.css link from markup
+        add @import './normalize.css'; to main css file. 
 
 
 
