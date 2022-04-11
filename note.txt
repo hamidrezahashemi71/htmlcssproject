@@ -2655,6 +2655,9 @@ ________________________________________________________
         deleting normalize.css link from markup
         add @import './normalize.css'; to main css file. 
 
+    this audit tool is also available as a chrome extension. 
+    chrome store lighthouse
+
 
 
         
